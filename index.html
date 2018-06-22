@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- styling links -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <title>   </title>
+  <title>Todo List 2.0</title>
 </head>
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Todo List 2.0</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- two list area -->
+
 <body>
+  <div class="container lists-row-container">
+
+    <div class="row list-container">
+      <!-- incomplete list -->
+      <div class="col-md-6 col-sm-12 list incomplete-list">
+        <ul>
+          <li class="list-item">
+            <div class="btn-group list-buttons" role="group">
+              <button name =" " class = "btn btn-success list-button">Complete</button>
+              <button name =" " class = "btn btn-danger list-button">Delete</button>
+              <button name =" " class = "btn list-button">Edit</button>
+          </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- completed list -->
+      <div class="col-md-6 col-sm-12 list completed-list">
+        <ul class="list-item">
+          <li class="list-item">
+
+            <div class="btn-group btn-group-lg list-buttons">
+              <button name =" " class = "list-button">Remove</button>
+              <button name =" " class = "list-button">Re-Do</button>
+          </div>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+<div class="clearfix visible-sm visible-xs"></div>
 
 
-<script src="js/scripts.js"></script>
-<script src="js/bootstrap.min.js"></script>
+  <!-- bottom entry area -->
+  <div class="row bottom-area">
+<form action="">
+<div class="col-md-9 col-sm-9 col-xs-9 entry-column">
+  <div class="row entry-row">
+    <input type="text" class="entry-box">
+  </div>
+  <div class="row entry-row">
+    <input type="datetime" class="entry-box">
+  </div>
+  <div class="row entry-row">
+    <input type="text" class="entry-box">
+  </div>
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-3 submit-container">
+  <button class = "submit">Submit</button>
+</div>
+</form>
+  </div>
+
+  <!-- scripts -->
+  <script src="js/scripts.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>

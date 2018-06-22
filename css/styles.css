@@ -1,0 +1,78 @@
+header {
+  text-align: center;
+  height: 10vh;
+}
+
+.lists-row-container {
+  height: 90vh;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.list-container {
+  height: 70%;
+}
+
+.list {
+  min-height: 25vh;
+  /* width: 90% */
+  /* margin: 0px 10px 0px 10px; */
+}
+
+.incomplete-list {
+  background-color: red;
+}
+
+.completed-list {
+  background-color: green;
+}
+
+.list-item {
+  background-color: gray;
+  margin-top: 10px;
+  min-height: 50px;
+}
+
+.list-buttons {
+  float: right;
+  margin: auto;
+}
+
+.bottom-area {
+  height: 30%;
+}
+
+.bottom-area form {
+  height: 100%;
+}
+
+.entry-column {
+  height: 100%;
+}
+
+.entry-row {
+  height: 33%;
+}
+
+.entry-box {
+  width: 100%;
+  height: 100%;
+}
+
+.entry-button-container {
+
+}
+
+.entry-button {
+
+}
+
+.submit {
+  height: 100%;
+  width: 100%;
+}
+
+.submit-container {
+height: 100%;
+
+}
