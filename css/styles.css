@@ -7,6 +7,7 @@ header {
   height: 90vh;
   width: 95%;
   margin: 0 auto;
+  padding-bottom: 10px;
 }
 
 .list-container {
@@ -15,8 +16,7 @@ header {
 
 .list {
   min-height: 25vh;
-  /* width: 90% */
-  /* margin: 0px 10px 0px 10px; */
+  max-height: 50vh;
 }
 
 .incomplete-list {
@@ -30,20 +30,32 @@ header {
 .list-item {
   background-color: gray;
   margin-top: 10px;
+  min-height: 100px;
+}
+
+.list-display-text {
+  float: left;
+  margin-right: 15%;
   min-height: 50px;
 }
 
 .list-buttons {
   float: right;
-  margin: auto;
+  min-height: 50px;
+}
+
+.list-button {
+  height: 100%;
 }
 
 .bottom-area {
   height: 30%;
+
 }
 
 .bottom-area form {
   height: 100%;
+
 }
 
 .entry-column {
@@ -75,4 +87,17 @@ header {
 .submit-container {
 height: 100%;
 
+}
+
+.btn-group {
+  /* float: right; */
+}
+
+.in {
+
+}
+
+
+.no-display {
+  display: none;
 }

@@ -29,27 +29,13 @@
     <div class="row list-container">
       <!-- incomplete list -->
       <div class="col-md-6 col-sm-12 list incomplete-list">
-        <ul>
-          <li class="list-item">
-            <div class="btn-group list-buttons" role="group">
-              <button name =" " class = "btn btn-success list-button">Complete</button>
-              <button name =" " class = "btn btn-danger list-button">Delete</button>
-              <button name =" " class = "btn list-button">Edit</button>
-          </div>
-          </li>
+        <ul id="incompleteList" class= "incompleted-ul">
         </ul>
       </div>
 
       <!-- completed list -->
-      <div class="col-md-6 col-sm-12 list completed-list">
-        <ul class="list-item">
-          <li class="list-item">
-
-            <div class="btn-group btn-group-lg list-buttons">
-              <button name =" " class = "list-button">Remove</button>
-              <button name =" " class = "list-button">Re-Do</button>
-          </div>
-        </li>
+      <div class="col-md-6 col-sm-12 list completed-list" >
+        <ul class="completed-ul" id= "completedList">
         </ul>
       </div>
     </div>
@@ -59,27 +45,29 @@
 
   <!-- bottom entry area -->
   <div class="row bottom-area">
-<form action="">
+<form action="" name = "todoEntryForm">
 <div class="col-md-9 col-sm-9 col-xs-9 entry-column">
   <div class="row entry-row">
-    <input type="text" class="entry-box">
+    <input type="text" class="entry-box" name="whatEntry" placeholder="What do you need to do?">
   </div>
   <div class="row entry-row">
-    <input type="datetime" class="entry-box">
+    <input type="text" class="entry-box" name="whenEntry" placeholder="When do you need to do it?">
   </div>
   <div class="row entry-row">
-    <input type="text" class="entry-box">
+    <input type="text" class="entry-box" name="whereEntry" placeholder="Where does it need to be done">
   </div>
 </div>
 
 <div class="col-md-3 col-sm-3 col-xs-3 submit-container">
-  <button class = "submit">Submit</button>
+  <button class = "submit" name="submit" id="submit">Submit</button>
 </div>
 </form>
   </div>
+</div>
 
   <!-- scripts -->
   <script src="js/scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
 </body>
 
