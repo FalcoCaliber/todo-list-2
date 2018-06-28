@@ -89,6 +89,15 @@ height: 100%;
 
 }
 
+.save {
+  height: 100%;
+  width: 100%;
+}
+
+.submit-save-rows {
+  height: 50%;
+}
+
 .btn-group {
   /* float: right; */
 }
