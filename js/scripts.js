@@ -1,9 +1,61 @@
-let submitButton = document.getElementById("submit");
+
 let incompletedItems = [];
 let completedItems = [];
 let incompleteList = document.getElementById("incompleteList");
 let completedList = document.getElementById("completedList");
-let itemCounter = 1
+
+if (localStorage.getItem('incomplete') === null) {
+  console.log('incomplete storage empty') } else {
+    let incStorage = JSON.parse(localStorage.getItem('incomplete'));
+    incStorage.forEach( e => {
+      incompletedItems.splice(e.itemNumber, 0, e)
+    })
+  };
+
+if (localStorage.getItem('complete') === null) {
+  console.log('complete storage empty')
+} else {
+  let compStorage = JSON.parse(localStorage.getItem('complete'));
+  compStorage.forEach( e => {
+    completedItems.splice(e.itemNumber, 0, e)
+  })};
+
+
+var itemCounter = 0 + localStorage.getItem("itemCounter");
+
+
+
+ if (incompletedItems.length < 1 ) {
+    null
+} else {
+    incompletedItems.forEach( e => {
+      makeListItem(e, incompleteList)
+    })};
+
+
+if (completedItems.length < 1 ) {
+    null
+  } else {
+    completedItems.forEach( e => {
+      makeListItem(e, completedList)
+    })};
+
+
+
+let submitButton = document.getElementById("submit");
+
+
+
+// window.onload = function () {
+
+
+
+
+
+
+// };
+
+
 
 // item constructor function
 function Item(itemNumber, what, when, where)  {
@@ -19,6 +71,7 @@ submitButton.addEventListener('click', e => {
   pushEntryValues();
   makeListItem(incompletedItems[incompletedItems.length - 1], incompleteList) ;
   // console.log(submitButton.call(this));
+  console.log(incompletedItems)
 });
 
 // todo entry function
@@ -29,7 +82,7 @@ function pushEntryValues() {
   itemCounter ++;
   let itemNumber = itemCounter;
   let newItem = new Item(itemNumber, what, when, where);
-  incompletedItems.push(newItem);
+  incompletedItems.splice(newItem.itemNumber, 0 , newItem);
   document.forms.todoEntryForm.reset();
 } ;
 
@@ -42,7 +95,7 @@ function makeListItem(item, whichList) {
   listItem.classList.add("list-item");
   listNumber = document.createElement('div');
   listNumber.id = item.itemNumber;
-  $("div").data(listNumber.id, item);
+  $('div').data(listNumber.id, item);
 
   let listWhat = document.createElement('p')
   listWhat.innerText = item.what;
@@ -98,25 +151,29 @@ function makeListItem(item, whichList) {
   whichList.insertBefore(listItem, whichList.childNodes[0]);
 
 
-
 };
 
 function completeItem() {
-  let textParent = this.parentNode.parentNode;
+let textParent = this.parentNode.parentNode;
+  itemData = $('div').data(textParent.childNodes[0].id)
   textTarget = $('div').data(textParent.childNodes[0].id);
   makeListItem(textTarget, completedList);
-  deleteItem(textParent);
   completedItems.push($('div').data(textParent.childNodes[0].id));
-  incompletedItems.splice($('div').data(textParent.childNodes[0].id))
-  // completedItems.push(cItem);
-  // makeListItem(completedItems.length-1);
-  // deleteItem();
+  deleteItem(textParent);
+
+
+
 };
 
 function deleteItem(listItem) {
    let parent = listItem.parentNode.parentNode.parentnode;
    let item = listItem.parentNode.parentNode;
+   let targetArray = (listItem.parentNode == incompleteList) ? incompletedItems : completedItems;
+   let arrayData = $('div').data(listItem.childNodes[0].id)
+   targetArray.splice(this, 1);
    $(listItem).remove();
+  console.log(incompletedItems, 'inc items');
+  console.log(completedItems, 'comp items');
 
 };
 
@@ -128,9 +185,6 @@ function editItem(listItem) {
   textTarget.where = prompt("where do you need to do it?", "Over the porcelin goddess.")
   makeListItem(textTarget, (listItem.parentNode === incompleteList) ? incompleteList : completedList);
   deleteItem(listItem);
- console.log(listItem);
- console.log(incompletedItems);
- console.log(completedItems);
 };
 
 function redoItem() {
@@ -138,7 +192,27 @@ function redoItem() {
   textTarget = $('div').data(textParent.childNodes[0].id);
   makeListItem(textTarget, incompleteList);
   deleteItem(textParent);
-  completedItems.splice($('div').data(textParent.childNodes[0].id));
-  incompletedItems.push($('div').data(textParent.childNodes[0].id));
+  completedItems.splice(textTarget.itemNumber, 1,);
+  incompletedItems.push(textTarget);
 
 };
+
+let saveButton = document.getElementById('save');
+saveButton.addEventListener('click', e => {
+  e.preventDefault();
+   save();
+})
+
+function save() {
+    localStorage.clear();
+    localStorage.setItem('incomplete', JSON.stringify(incompletedItems));
+     localStorage.setItem('complete', JSON.stringify(completedItems));
+
+console.log(localStorage);
+}
+/*
+   localStorage.setItem("itemCounter", itemCounter);
+   console.log(localStorage);
+ };
+}
+*/
