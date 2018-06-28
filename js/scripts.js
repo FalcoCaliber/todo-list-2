@@ -41,7 +41,6 @@ if (completedItems.length < 1 ) {
     })};
 
 
-localStorage.clear();
 
 let submitButton = document.getElementById("submit");
 
