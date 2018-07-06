@@ -1,3 +1,7 @@
+* {
+  font-family: 'Raleway', sans-serif;
+}
+
 header {
   text-align: center;
   height: 50%;
@@ -6,6 +10,9 @@ header {
 
 .nav {
   background: #fff;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
 }
 
 .inc-tab-button {
@@ -18,28 +25,41 @@ header {
 
 .inc-tab-button a {
   background: rgb(255,142,142);
+  color: black !important;
 }
 
 .comp-tab-button a {
   background: rgba(133,255,135,1);
+  color: black !important;
 }
 
 .inc-tab-button a:hover, .inc-tab-button a:focus {
-  background: rgb(255,142,142) !important;
+  background: #F4E04D !important;
+  color: black !important;
 }
 
 .comp-tab-button a:hover, .comp-tab-button a:focus {
-  background: rgba(133,255,135,1) !important;
+  background: #7CAFC4 !important;
+  color: black !important;
 }
 
 .nav-tabs>li.inc-tab-button a {
-  background: rgb(255,142,142) !important;
+  background: #F4E04D !important;
+  color: black !important;
 }
 
 .nav-tabs>li.comp-tab-button a{
-  background: rgba(133,255,135,1) !important;
+  background: #7CAFC4 !important;
+  color: black; !important
 }
 
+.incompleted-ul {
+  overflow: hidden;
+}
+
+.completed-ul {
+
+}
 .lists-row-container {
 }
 
@@ -50,37 +70,67 @@ header {
   min-height: 50vh;
 }
 
+.list li {
+  font-size: 2em;
+  width: 80%;
+  border-radius: 10px;
+  list-style-type: none;
+  height: 100%;
+  line-height: 1;
+  float: left;
+  overflow:
+}
+
+.list li p:first-of-type {
+  margin-top: 15px;
+}
+
 .incomplete-list {
-  background: rgb(255,142,142);
+  background: #F4E04D;
 }
 
 .completed-list {
-  background: rgba(133,255,135,1);
+  background: #7CAFC4;
 }
 
 .list-item {
-  background-color: gray;
+  align-items: center;
+}
+
+.incomplete-list .list-item {
+  background-color: #7CAFC4;
   margin-top: 10px;
   min-height: 100px;
 }
 
+.completed-list .list-item {
+  background-color: #F4E04D;
+  margin-top: 10px;
+  min-height: 100px;
+}
+
+.list li p {
+  padding-right: 209px;
+  min-height: 25px;
+  padding-left: 15px;
+}
+
 .list-display-text {
-  float: left;
-  margin-right: 15%;
-  min-height: 50px;
+  float: left !important;
 }
 
 .list-buttons {
-  float: right;
+  float: right !important;
   min-height: 50px;
 }
 
 .list-button {
   height: 100%;
+  float: right;
 }
 
 .bottom-area {
-  height: 30%;
+  height: 300px;
 
 }
 
@@ -113,6 +163,7 @@ header {
 .submit {
   height: 100%;
   width: 100%;
+  font-size: 2em;
 }
 
 .submit-container {
@@ -123,6 +174,7 @@ height: 100%;
 .save {
   height: 100%;
   width: 100%;
+  font-size: 2em;
 }
 
 .submit-save-rows {

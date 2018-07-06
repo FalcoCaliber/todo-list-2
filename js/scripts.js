@@ -180,9 +180,9 @@ function deleteItem(listItem) {
 function editItem(listItem) {
   textTarget = $('div').data(listItem.childNodes[0].id);
 
-  textTarget.what = prompt("what do you need to do?", "Re-think my life choices.")
-  textTarget.when = prompt("When do you need to do it?", "After another this shot of cheap vodka.")
-  textTarget.where = prompt("where do you need to do it?", "Over the porcelin goddess.")
+  textTarget.what = prompt("what do you need to do?", "Walk my dog")
+  textTarget.when = prompt("When do you need to do it?", "Tomorrow")
+  textTarget.where = prompt("where do you need to do it?", "at Woodward Park")
   makeListItem(textTarget, (listItem.parentNode === incompleteList) ? incompleteList : completedList);
   deleteItem(listItem);
 };
