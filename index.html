@@ -9,14 +9,15 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <title>Todo List 2.0</title>
+  <title>Todo List</title>
 </head>
 
+<body>
 <header>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Todo List 2.0</h1>
+        <h1>Todo List</h1>
       </div>
     </div>
   </div>
@@ -24,52 +25,66 @@
 
 <!-- two list area -->
 
-<body>
-  <div class="container lists-row-container">
 
-    <div class="row list-container">
-      <!-- incomplete list -->
-      <div class="col-md-6 col-sm-12 list incomplete-list">
-        <ul id="incompleteList" class= "incompleted-ul">
-        </ul>
-      </div>
+<div class="container">
+  <ul class="nav nav-tabs row" role="tablist">
+    <li role="presentation" class="active inc-tab-button"><a href="#inc-tab" aria-controls="home" role="tab" data-toggle="tab">Incomplete</a></li>
+    <li role="presentation" class="comp-tab-button"><a href="#comp-tab" aria-controls="profile" role="tab" data-toggle="tab">Completed</a></li>
+  </ul>
+</div>
 
-      <!-- completed list -->
-      <div class="col-md-6 col-sm-12 list completed-list" >
-        <ul class="completed-ul" id= "completedList">
-        </ul>
-      </div>
+
+
+  <div class="tab-content container">
+    
+  <div role='tabpanel' class="row list-container tab-pane active" id="inc-tab">
+    <!-- incomplete list -->
+    <div class="col-md-12 col-sm-12 list incomplete-list">
+      <ul id="incompleteList" class="incompleted-ul">
+      </ul>
     </div>
+</div>
 
-<div class="clearfix visible-sm visible-xs"></div>
+  <!-- completed list -->
+  <div role="tabpanel" class="row list-container tab-pane" id="comp-tab">
+    <div class="col-md-12 col-sm-12 list completed-list ">
+      <ul class="completed-ul" id="completedList">
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div>
+  <div class="clearfix visible-sm visible-xs"></div>
 
 
   <!-- bottom entry area -->
+  <div class="container">
   <div class="row bottom-area">
-<form action="" name = "todoEntryForm">
-<div class="col-md-9 col-sm-9 col-xs-9 entry-column">
-  <div class="row entry-row">
-    <input type="text" class="entry-box" name="whatEntry" placeholder="What do you need to do?">
-  </div>
-  <div class="row entry-row">
-    <input type="text" class="entry-box" name="whenEntry" placeholder="When do you need to do it?">
-  </div>
-  <div class="row entry-row">
-    <input type="text" class="entry-box" name="whereEntry" placeholder="Where does it need to be done">
-  </div>
-</div>
+    <form action="" name="todoEntryForm">
+      <div class="col-md-9 col-sm-9 col-xs-9 entry-column">
+        <div class="row entry-row">
+          <input type="text" class="entry-box" name="whatEntry" placeholder="What do you need to do?">
+        </div>
+        <div class="row entry-row">
+          <input type="text" class="entry-box" name="whenEntry" placeholder="When do you need to do it?">
+        </div>
+        <div class="row entry-row">
+          <input type="text" class="entry-box" name="whereEntry" placeholder="Where does it need to be done">
+        </div>
+      </div>
 
-<div class="col-md-3 col-sm-3 col-xs-3 submit-container">
-  <div class="row submit-save-rows">
-  <button class = "submit" name="submit" id="submit">Submit</button>
+      <div class="col-md-3 col-sm-3 col-xs-3 submit-container">
+        <div class="row submit-save-rows">
+          <button class="submit" name="submit" id="submit">Submit</button>
+        </div>
+        <div class="row submit-save-rows">
+          <button class="save" name="save" id="save"> Save</button>
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="row submit-save-rows">
-    <button class ="save" name ="save" id="save" > Save</button>
   </div>
-</div>
-</form>
-  </div>
-</div>
 
   <!-- scripts -->
   <script src="js/scripts.js"></script>
