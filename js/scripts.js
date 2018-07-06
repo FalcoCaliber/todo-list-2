@@ -172,19 +172,24 @@ function deleteItem(listItem) {
    let arrayData = $('div').data(listItem.childNodes[0].id)
    targetArray.splice(this, 1);
    $(listItem).remove();
-  console.log(incompletedItems, 'inc items');
-  console.log(completedItems, 'comp items');
 
 };
 
 function editItem(listItem) {
   textTarget = $('div').data(listItem.childNodes[0].id);
-
+  let targetArray = (listItem.parentNode === incompleteList) ? incompletedItems : completedItems;
+  let arrayData = $('div').data(listItem.childNodes[0].id);
+  targetArray.splice(this, 1);
+  deleteItem(listItem);
   textTarget.what = prompt("what do you need to do?", "Walk my dog")
   textTarget.when = prompt("When do you need to do it?", "Tomorrow")
   textTarget.where = prompt("where do you need to do it?", "at Woodward Park")
-  makeListItem(textTarget, (listItem.parentNode === incompleteList) ? incompleteList : completedList);
-  deleteItem(listItem);
+  itemCounter ++;
+  let redoneItem = new Item(itemCounter, textTarget.what, textTarget.when, textTarget.where);
+  makeListItem(textTarget, incompleteList);
+  incompletedItems.splice(textTarget.itemNumber,1, redoneItem);
+  console.log(incompletedItems);
+
 };
 
 function redoItem() {
