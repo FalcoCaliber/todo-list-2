@@ -1,92 +1,72 @@
-
 let incompletedItems = [];
 let completedItems = [];
 let incompleteList = document.getElementById("incompleteList");
 let completedList = document.getElementById("completedList");
+let submitButton = document.getElementById("submit");
+let saveButton = document.getElementById('save');
+var itemCounter = 0 + localStorage.getItem("itemCounter");
 
 if (localStorage.getItem('incomplete') === null) {
-  console.log('incomplete storage empty') } else {
-    let incStorage = JSON.parse(localStorage.getItem('incomplete'));
-    incStorage.forEach( e => {
-      incompletedItems.splice(e.itemNumber, 0, e)
-    })
-  };
+  console.log('incomplete storage empty')
+} else {
+  let incStorage = JSON.parse(localStorage.getItem('incomplete'));
+  incStorage.forEach(e => {
+    incompletedItems.splice(e.itemNumber, 0, e)
+  })
+};
 
 if (localStorage.getItem('complete') === null) {
   console.log('complete storage empty')
 } else {
   let compStorage = JSON.parse(localStorage.getItem('complete'));
-  compStorage.forEach( e => {
+  compStorage.forEach(e => {
     completedItems.splice(e.itemNumber, 0, e)
-  })};
+  })
+};
 
-
-var itemCounter = 0 + localStorage.getItem("itemCounter");
-
-
-
- if (incompletedItems.length < 1 ) {
-    null
+if (incompletedItems.length < 1) {
+  null
 } else {
-    incompletedItems.forEach( e => {
-      makeListItem(e, incompleteList)
-    })};
+  incompletedItems.forEach(e => {
+    makeListItem(e, incompleteList)
+  })
+};
 
 
-if (completedItems.length < 1 ) {
-    null
-  } else {
-    completedItems.forEach( e => {
-      makeListItem(e, completedList)
-    })};
+if (completedItems.length < 1) {
+  null
+} else {
+  completedItems.forEach(e => {
+    makeListItem(e, completedList)
+  })
+};
 
-
-
-let submitButton = document.getElementById("submit");
-
-
-
-// window.onload = function () {
-
-
-
-
-
-
-// };
-
-
-
-// item constructor function
-function Item(itemNumber, what, when, where)  {
+function Item(itemNumber, what, when, where) {
   this.itemNumber = itemNumber,
-  this.what = what,
-  this.when = when,
-  this.where = where
+    this.what = what,
+    this.when = when,
+    this.where = where
 };
 
 // submit Button Entry Pusher & Item Maker
 submitButton.addEventListener('click', e => {
   e.preventDefault();
   pushEntryValues();
-  makeListItem(incompletedItems[incompletedItems.length - 1], incompleteList) ;
-  // console.log(submitButton.call(this));
+  makeListItem(incompletedItems[incompletedItems.length - 1], incompleteList);
   console.log(incompletedItems)
 });
 
 // todo entry function
 function pushEntryValues() {
-  let what = document.forms.todoEntryForm.whatEntry.value ;
-  let when = document.forms.todoEntryForm.whenEntry.value ;
-  let where = document.forms.todoEntryForm.whereEntry.value ;
-  itemCounter ++;
+  let what = document.forms.todoEntryForm.whatEntry.value;
+  let when = document.forms.todoEntryForm.whenEntry.value;
+  let where = document.forms.todoEntryForm.whereEntry.value;
+  itemCounter++;
   let itemNumber = itemCounter;
   let newItem = new Item(itemNumber, what, when, where);
-  incompletedItems.splice(newItem.itemNumber, 0 , newItem);
+  incompletedItems.splice(newItem.itemNumber, 0, newItem);
   document.forms.todoEntryForm.reset();
-} ;
-
-
+};
 
 // makes a list function
 function makeListItem(item, whichList) {
@@ -105,7 +85,6 @@ function makeListItem(item, whichList) {
   listWhere.innerText = item.where;
   let listDisplayText = document.createElement("div");
   listDisplayText.classList.add('list-display-text');
-
 
   let buttonsBox = document.createElement("div");
   buttonsBox.classList.add("btn-group", "list-buttons");
@@ -134,9 +113,9 @@ function makeListItem(item, whichList) {
   redo.innerText = "Re-Do";
   redo.addEventListener('click', redoItem);
 
-  (whichList === incompleteList) ? buttonsBox.appendChild(complete) : buttonsBox.appendChild(redo);
+  (whichList === incompleteList) ? buttonsBox.appendChild(complete): buttonsBox.appendChild(redo);
   buttonsBox.appendChild(dlt);
-  (whichList === incompleteList) ? buttonsBox.appendChild(edit) : null ;
+  (whichList === incompleteList) ? buttonsBox.appendChild(edit): null;
 
   listDisplayText.appendChild(listWhat);
   listDisplayText.appendChild(listWhen);
@@ -146,33 +125,25 @@ function makeListItem(item, whichList) {
   listItem.appendChild(listDisplayText);
   listItem.appendChild(buttonsBox);
 
-  // let whichList = (item.parentNode === completedList) ? document.getElementById("completedList") : document.getElementById("incompleteList");
-
   whichList.insertBefore(listItem, whichList.childNodes[0]);
-
-
 };
 
 function completeItem() {
-let textParent = this.parentNode.parentNode;
+  let textParent = this.parentNode.parentNode;
   itemData = $('div').data(textParent.childNodes[0].id)
   textTarget = $('div').data(textParent.childNodes[0].id);
   makeListItem(textTarget, completedList);
   completedItems.push($('div').data(textParent.childNodes[0].id));
   deleteItem(textParent);
-
-
-
 };
 
 function deleteItem(listItem) {
-   let parent = listItem.parentNode.parentNode.parentnode;
-   let item = listItem.parentNode.parentNode;
-   let targetArray = (listItem.parentNode == incompleteList) ? incompletedItems : completedItems;
-   let arrayData = $('div').data(listItem.childNodes[0].id)
-   targetArray.splice(this, 1);
-   $(listItem).remove();
-
+  let parent = listItem.parentNode.parentNode.parentnode;
+  let item = listItem.parentNode.parentNode;
+  let targetArray = (listItem.parentNode == incompleteList) ? incompletedItems : completedItems;
+  let arrayData = $('div').data(listItem.childNodes[0].id)
+  targetArray.splice(this, 1);
+  $(listItem).remove();
 };
 
 function editItem(listItem) {
@@ -184,12 +155,10 @@ function editItem(listItem) {
   textTarget.what = prompt("what do you need to do?", "Walk my dog")
   textTarget.when = prompt("When do you need to do it?", "Tomorrow")
   textTarget.where = prompt("where do you need to do it?", "at Woodward Park")
-  itemCounter ++;
+  itemCounter++;
   let redoneItem = new Item(itemCounter, textTarget.what, textTarget.when, textTarget.where);
   makeListItem(textTarget, incompleteList);
-  incompletedItems.splice(textTarget.itemNumber,1, redoneItem);
-  console.log(incompletedItems);
-
+  incompletedItems.splice(textTarget.itemNumber, 1, redoneItem);
 };
 
 function redoItem() {
@@ -197,27 +166,17 @@ function redoItem() {
   textTarget = $('div').data(textParent.childNodes[0].id);
   makeListItem(textTarget, incompleteList);
   deleteItem(textParent);
-  completedItems.splice(textTarget.itemNumber, 1,);
+  completedItems.splice(textTarget.itemNumber, 1, );
   incompletedItems.push(textTarget);
-
 };
 
-let saveButton = document.getElementById('save');
 saveButton.addEventListener('click', e => {
   e.preventDefault();
-   save();
+  save();
 })
 
 function save() {
-    localStorage.clear();
-    localStorage.setItem('incomplete', JSON.stringify(incompletedItems));
-     localStorage.setItem('complete', JSON.stringify(completedItems));
-
-console.log(localStorage);
+  localStorage.clear();
+  localStorage.setItem('incomplete', JSON.stringify(incompletedItems));
+  localStorage.setItem('complete', JSON.stringify(completedItems));
 }
-/*
-   localStorage.setItem("itemCounter", itemCounter);
-   console.log(localStorage);
- };
-}
-*/
